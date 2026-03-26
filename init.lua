@@ -966,7 +966,7 @@ vim.opt.tabstop = 2
 
 vim.keymap.set("i", "<C-H>", "<C-w>")
 vim.keymap.set("n", "<C-H>", "db")
-vim.keymap.set("i", "<C-Del>", "<Esc>dwi")
+vim.keymap.set("i", "<C-Del>", "<Esc><Right>dwi")
 vim.keymap.set("n", "<C-Del>", "dw")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
