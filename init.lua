@@ -496,7 +496,6 @@ require('lazy').setup({
       },
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
@@ -655,7 +654,7 @@ require('lazy').setup({
         -- You can add other tools here that you want Mason to install
       })
 
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-lspconfig').setup { ensure_installed = ensure_installed }
 
       for name, server in pairs(servers) do
         vim.lsp.config(name, server)
@@ -684,7 +683,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, ts = true, html = true, php = true, css = true, lua = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -947,6 +946,30 @@ require('lazy').setup({
     },
   },
 })
+
+-- User Overrides
+vim.api.nvim_set_keymap('c', 'w!!', "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*" },
+  callback = function()
+    vim.opt.wrap = true
+    vim.opt.relativenumber = true
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
+})
+vim.opt.wrap = true
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
+vim.keymap.set("i", "<C-H>", "<C-w>")
+vim.keymap.set("n", "<C-H>", "db")
+vim.keymap.set("i", "<C-Del>", "<Esc>dwi")
+vim.keymap.set("n", "<C-Del>", "dw")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
