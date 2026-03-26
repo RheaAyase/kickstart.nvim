@@ -948,8 +948,6 @@ require('lazy').setup({
 })
 
 -- User Overrides
-vim.api.nvim_set_keymap('c', 'w!!', "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true })
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*" },
   callback = function()
