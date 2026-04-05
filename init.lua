@@ -256,7 +256,8 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
-  { 'NMAC427/guess-indent.nvim', opts = {} },
+  -- { 'folke/persistence.nvim', opts = {} },
+  { 'NMAC427/guess-indent.nvim', event = "BufReadPre", opts = {} },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
@@ -267,7 +268,6 @@ require('lazy').setup({
   --                -- Your gitsigns configuration here
   --            })
   --        end,
-  --    }
   --
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
@@ -683,7 +683,8 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, ts = true, html = true, php = true, css = true, lua = true }
+        local disable_filetypes =
+          { c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, ts = true, html = true, php = true, css = true, lua = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -912,8 +913,10 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.snacks',
+  require 'kickstart.plugins.editor',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -948,8 +951,8 @@ require('lazy').setup({
 })
 
 -- User Overrides
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '*' },
   callback = function()
     vim.opt.wrap = true
     vim.opt.relativenumber = true
@@ -964,10 +967,19 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
-vim.keymap.set("i", "<C-H>", "<C-w>")
-vim.keymap.set("n", "<C-H>", "db")
-vim.keymap.set("i", "<C-Del>", "<Esc><Right>dwi")
-vim.keymap.set("n", "<C-Del>", "dw")
+-- Delete word
+vim.keymap.set('i', '<C-H>', '<C-w>')
+--vim.keymap.set('n', '<C-H>', 'db')
+vim.keymap.set('i', '<C-Del>', '<Esc><Right>dwi')
+--vim.keymap.set('n', '<C-Del>', 'dw')
+
+-- Save and quit
+vim.keymap.set('i', '<C-s>', '<Esc>:wa<Enter>a')
+vim.keymap.set('n', '<C-s>', ':wa<Enter>')
+vim.keymap.set('i', '<C-q>', '<Esc>:qa<Enter>')
+vim.keymap.set('n', '<C-q>', ':qa<Enter>')
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
