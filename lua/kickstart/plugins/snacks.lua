@@ -40,7 +40,7 @@ return {
     -- ════════════════════════════════════════════════════════════════════
     -- Top-level (most used - quick access)
     -- ════════════════════════════════════════════════════════════════════
-    { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "[S]earch [F]iles" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>.", function() Snacks.scratch() end, desc = "Scratch Buffer" },
     { "<leader>e", function() Snacks.explorer() end, desc = "Explorer" },
