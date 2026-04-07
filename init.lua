@@ -968,13 +968,13 @@ vim.opt.wrap = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.tabStop = 2
 
 -- Delete word
-vim.keymap.set('i', '<C-H>', '<C-w>')
+vim.keymap.set('i', '<C-H>', '<Esc><Right>dbi')
 --vim.keymap.set('n', '<C-H>', 'db')
-vim.keymap.set('i', '<C-Del>', '<Esc><Right>dwi')
---vim.keymap.set('n', '<C-Del>', 'dw')
+vim.keymap.set('i', '<C-Del>', '<Esc><Right>dei')
+--vim.keymap.set('n', '<C-Del>', 'de')
 
 -- Save and quit
 vim.keymap.set('i', '<C-s>', '<Esc>:wa<Enter>a')
