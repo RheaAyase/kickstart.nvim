@@ -968,7 +968,7 @@ vim.opt.wrap = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-vim.opt.tabStop = 2
+vim.opt.tabstop = 2
 
 -- Delete word
 vim.keymap.set('i', '<C-H>', '<Esc><Right>dbi')
