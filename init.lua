@@ -684,7 +684,7 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes =
-          { c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, ts = true, html = true, php = true, css = true, lua = true }
+          { sh = true, c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, json = true, yaml = true, yml = true, ts = true, html = true, php = true, css = true, lua = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
