@@ -681,21 +681,7 @@ require('lazy').setup({
     ---@type conform.setupOpts
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes =
-          { sh = true, c = true, cpp = true, py = true, cs = true, sh = true, go = true, js = true, json = true, yaml = true, yml = true, ts = true, html = true, php = true, css = true, lua = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
-        else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end
-      end,
+      format_on_save = nil,
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
