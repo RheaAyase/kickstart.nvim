@@ -11,6 +11,7 @@
   "mini.nvim": { "branch": "main", "commit": "439cdcd6992bc9012efd7d8ed7a7b7a0f1fac32a" },
   "neo-tree.nvim": { "branch": "main", "commit": "84c75e7a7e443586f60508d12fc50f90d9aee14e" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
+  "nvim-docs-view": { "branch": "master", "commit": "a5256fd30417f58804691df174bc76a8c8f8163a" },
   "nvim-lspconfig": { "branch": "master", "commit": "4daa1436595dbce4c6151f75c38a0d855796c554" },
   "nvim-treesitter": { "branch": "main", "commit": "6620ae1c44dfa8623b22d0cbf873a9e8d073b849" },
   "persistence.nvim": { "branch": "main", "commit": "b20b2a7887bd39c1a356980b45e03250f3dce49c" },
